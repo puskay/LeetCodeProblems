@@ -1,0 +1,40 @@
+public class Solution {
+    public void SortColors(int[] nums) {
+        int len = nums.Length-1;
+        int lastZero =0;
+        for (int i =0; i<len; i++)
+        {
+            if(nums[i]==2)
+            {
+                bool toSwap = false;
+                while(!toSwap && len>0)
+                {
+                    if(nums[len]==2)
+                    {
+                        len--;
+                    }
+                    else
+                    {
+                        toSwap = true;
+                    }
+                }
+                if(len>0)
+                {
+                    int temp = nums[i];
+                    nums[i]=nums[len];
+                    nums[len]=temp;
+                }
+            }
+            if(nums[i]==0)
+            {
+                if(i>=lastZero)
+                {
+                    int temp = nums[i];
+                    nums[i]=nums[lastZero];
+                    nums[lastZero]=temp;
+                    lastZero++;
+                }
+            }
+        }
+    }
+}
